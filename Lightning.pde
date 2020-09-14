@@ -1,33 +1,30 @@
-float x = 600; 
-float y = 300; 
+int endX = 0; 
+int endY = 175;
+int startX = 0;
+int startY = 175;
 
-float xSpeed = 10;
-float ySpeed = 30;
- 
- void setup(){
-    size(800, 800);
-  strokeWeight(2);
-  background(0);
- }
- 
- void draw(){
-   stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
-   
-   x += xSpeed; 
-   if (x > width || x < 0){
-     xSpeed *= -1;
-   }
-   
-   y+= ySpeed; 
-   if (y > height || y < 0){ 
-     ySpeed *= -1; 
-   }
-    
-    ellipse(x, y, 50, 50);
- }
- 
- void mousePressed()
+void setup()
 {
-  xSpeed += 50;
-  ySpeed += 5;
+  size(500, 500);
+  strokeWeight(3);
+  background(0);
+}
+void draw()
+{
+stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+while(endX < 500)
+ {
+  endX = startX + (int)(Math.random()*10);
+  endY = startY + (int)(Math.random()*20)-10;
+  line(startX, startY, endX, endY);
+  startX = endX;
+  startY = endY;
+}
+}
+void mousePressed()
+{
+  startX = 0;
+  startY = 150; 
+  endX = 0;
+  endY = 150;
 }
